@@ -64,7 +64,9 @@ const ColorPage: NextPage<{ initialColors: HSV[] }> = ({ initialColors }) => {
               }}
               otherColors={[...colors.slice(0, i), ...colors.slice(i+1)]}
               onShuffle={() => {
-                setColors([...colors.slice(0, i), makeRandomColor(), ...colors.slice(i+1)]);
+                const cs = [...colors.slice(0, i), makeRandomColor(), ...colors.slice(i+1)];
+                setColors(cs);
+                router.push(colors2url(cs), null, { scroll: false });
               }}
               onClose={() => {
                 const cs = [...colors.slice(0, i), ...colors.slice(i+1)];
