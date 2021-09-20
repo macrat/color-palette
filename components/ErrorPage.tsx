@@ -8,7 +8,7 @@ import { hsv2css, uiColor } from 'lib/color';
 
 
 const ErrorPage: FC<{ code: number; message: string }> = ({ code, message }) => {
-  const [color, setColor] = useState<HSV>({ h: 0, s: 0, v: 0 });
+  const [color, setColor] = useState<HSV>({ h: 0, s: 0, v: 100 });
 
   useEffect(() => {
     setColor({
