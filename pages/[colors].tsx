@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDebounce } from 'use-debounce';
 
 import type { HSV } from 'lib/color';
-import { hsv2css } from 'lib/color';
+import { hsv2css, makeRandomColor } from 'lib/color';
 import { colors2url, url2colors } from 'lib/util';
 import Head from 'components/Head';
 import ColorPane from 'components/ColorPane';
@@ -41,12 +41,6 @@ const ColorPage: NextPage<{ initialColors: HSV[] }> = ({ initialColors }) => {
   useEffect(() => {
     setColors(initialColors);
   }, [initialColors]);
-
-  const makeRandomColor = () => ({
-    h: Math.round(Math.random()*360),
-    s: Math.round(Math.random()*60)+30,
-    v: Math.round(Math.random()*75)+25,
-  });
 
   return (
     <div>

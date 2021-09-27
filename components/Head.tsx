@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import type { HSV } from 'lib/color';
 import { hsv2css } from 'lib/color';
+import { colors2url } from 'lib/util';
 import { makeFavicon } from 'lib/favicon';
 
 
@@ -16,6 +17,7 @@ const CommonHead: FC<{ colors?: HSV[] }> = ({ colors, children }) => {
       {colors.length > 0 ? (
         <meta name="theme-color" content={hsv2css(colors[0])} />
       ) : null}
+      <link rel="icon" href={'/favicon.svg?colors=' + colors2url(colors)} type="image/svg+xml" />
       <link rel="icon" href={makeFavicon(colors)} type="image/svg+xml" />
 
       { children }

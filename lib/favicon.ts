@@ -54,12 +54,15 @@ export const makePositions = (layout: number[]): Rectangle[] => {
 };
 
 
-export const makeFavicon = (colors: HSV[]) => {
+export const makeSVG = (colors: HSV[]) => {
   const pos = makePositions(makeLayout(colors.length));
 
-  const svg = `<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="clip-circle"><rect width="1" height="1" rx="0.2" /></clipPath></defs>${ colors.map((x, i) => (
+  return `<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="clip-circle"><rect width="1" height="1" rx="0.2" /></clipPath></defs>${ colors.map((x, i) => (
     `<rect x="${pos[i].x}" y="${pos[i].y}" width="${pos[i].w}" height="${pos[i].h}" fill="${hsv2css(x)}" clip-path="url(#clip-circle)" />`
   )).join('') }</svg>`;
+};
 
-  return 'data:image/svg+xml;base64,' + new Buffer(svg, 'ascii').toString('base64');
+
+export const makeFavicon = (colors: HSV[]) => {
+  return 'data:image/svg+xml;base64,' + new Buffer(makeSVG(colors), 'ascii').toString('base64');
 };

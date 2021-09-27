@@ -191,3 +191,12 @@ export function uiColor(otherColor: HSV, target: number = 8.0): HSV {
   }
   return white;
 }
+
+
+export function makeRandomColor(): HSV {
+  return {
+    h: Math.round(Math.random()*360),
+    s: Math.round(Math.random()*60)+30,
+    v: Math.round(Math.random()*75)+25,
+  };
+}
