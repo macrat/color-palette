@@ -9,7 +9,7 @@ export default function favicon(req: NextApiRequest, res: NextApiResponse) {
     if (!req.query.colors) {
         const c = makeRandomColor();
         const query = [hsv2css(uiColor(c, 3)).slice(1), hsv2css(c).slice(1), hsv2css(uiColor(c)).slice(1)].join(',');
-        let url = '/favicon.svg?colors=' + query;
+        let url = '/api/icon.svg?colors=' + query;
         if (Number(req.query.round) || Number(req.query.round) === 0) {
             url += '&round=' + String(Math.max(0, Math.min(1, Number(req.query.round))));
         }

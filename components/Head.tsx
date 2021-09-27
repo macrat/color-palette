@@ -17,7 +17,7 @@ const CommonHead: FC<{ colors?: HSV[] }> = ({ colors, children }) => {
       {colors.length > 0 ? (
         <meta name="theme-color" content={hsv2css(colors[0])} />
       ) : null}
-      <link rel="icon" href={'/favicon.svg?colors=' + colors2url(colors)} type="image/svg+xml" />
+      <link rel="icon" href={'/api/icon.svg?colors=' + colors2url(colors)} type="image/svg+xml" />
       <link rel="icon" href={makeFavicon(colors)} type="image/svg+xml" />
 
       { children }
