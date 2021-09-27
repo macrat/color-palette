@@ -55,9 +55,9 @@ export const makePositions = (layout: number[]): Rectangle[] => {
 
 
 export interface MakeSVGOptions {
-  round: number;
-  width: number;
-  height: number;
+  round?: number;
+  width?: number;
+  height?: number;
 }
 
 

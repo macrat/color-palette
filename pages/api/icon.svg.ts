@@ -33,7 +33,7 @@ export default function favicon(req: NextApiRequest, res: NextApiResponse) {
         height: Math.max(0, Number(req.query.height ?? 512)),
     };
 
-    const colors = url2colors(req.query.colors);
+    const colors = url2colors(String(req.query.colors));
 
     res.setHeader('Content-Type', 'image/svg+xml');
     res.status(200).send(makeSVG(colors, opts));
