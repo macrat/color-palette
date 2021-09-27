@@ -54,10 +54,17 @@ export const makePositions = (layout: number[]): Rectangle[] => {
 };
 
 
-export const makeSVG = (colors: HSV[], round: number = 0.2) => {
+export interface MakeSVGOptions {
+  round: number;
+  width: number;
+  height: number;
+}
+
+
+export const makeSVG = (colors: HSV[], { round = 0.2, width = 512, height = 512 }: MakeSVGOptions = {}) => {
   const pos = makePositions(makeLayout(colors.length));
 
-  return `<svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="clip-circle"><rect width="1" height="1" rx="${round}" /></clipPath></defs>${ colors.map((x, i) => (
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" width="${width}" height="${height}" preserveAspectRatio="none"><defs><clipPath id="clip-circle"><rect width="1" height="1" rx="${round}" /></clipPath></defs>${ colors.map((x, i) => (
     `<rect x="${pos[i].x}" y="${pos[i].y}" width="${pos[i].w}" height="${pos[i].h}" fill="${hsv2css(x)}" clip-path="url(#clip-circle)" />`
   )).join('') }</svg>`;
 };
